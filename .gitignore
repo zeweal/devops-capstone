@@ -1,0 +1,18 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfplan
+
+# Python / Virtual Environments
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# IDEs
+.vscode/
+.idea/
