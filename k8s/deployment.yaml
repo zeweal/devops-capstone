@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: devops-capstone
+        app: my-flask-app
     spec:
       containers:
       - name: devops-capstone-app
