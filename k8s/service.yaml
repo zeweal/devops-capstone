@@ -10,4 +10,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80         # Port exposed externally
-      targetPort: 5000 # Port your Flask app runs on inside the container
+      targetPort: 5080 # Port your Flask app runs on inside the container
