@@ -42,16 +42,13 @@ pipeline {
         // 4. Deploy to AWS EKS using kubectl
         stage('Deploy to EKS') {
             steps {
-                withCredentials([aws(credentialsId: 'aws-credentials', regionName: env.AWS_REGION)]) {
+                withCredentials([aws(credentialsId: 'aws-credentials')]) {
                     script {
-                        // Update kubeconfig to connect to your EKS cluster
                         sh "aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}"
-                        
-                        // Apply Kubernetes manifests (or update deployment image dynamically)
+                        // This applies your deployment.yaml directly from your repo workspace
+                        sh "kubectl apply -f deployment.yaml"
+                        // This ensures the deployment rolls out with your new tag
                         sh "kubectl set image deployment/my-flask-app my-flask-app=${ECR_REGISTRY}/${REPOSITORY_NAME}:${IMAGE_TAG}"
-                        
-                        // Alternatively, if using a manifest file:
-                        // sh "kubectl apply -f k8s/"
                     }
                 }
             }
