@@ -48,7 +48,7 @@ pipeline {
                         // This applies your deployment.yaml directly from your repo workspace
                         sh "kubectl apply -f k8s/deployment.yaml"
                         // This ensures the deployment rolls out with your new tag
-                        sh "kubectl set image deployment/my-flask-app my-flask-app=${ECR_REGISTRY}/${REPOSITORY_NAME}:${IMAGE_TAG}"
+                        sh "kubectl set image deployment/my-flask-app devops-capstone-app=${ECR_REGISTRY}/${REPOSITORY_NAME}:${IMAGE_TAG}"
                     }
                 }
             }
