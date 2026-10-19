@@ -48,7 +48,7 @@ pipeline {
                         sh "aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}"
                         
                         // Apply Kubernetes manifests (or update deployment image dynamically)
-                        sh "kubectl set image deployment/flask-app flask-app=${ECR_REGISTRY}/${REPOSITORY_NAME}:${IMAGE_TAG}"
+                        sh "kubectl set image deployment/my-flask-app my-flask-app=${ECR_REGISTRY}/${REPOSITORY_NAME}:${IMAGE_TAG}"
                         
                         // Alternatively, if using a manifest file:
                         // sh "kubectl apply -f k8s/"
